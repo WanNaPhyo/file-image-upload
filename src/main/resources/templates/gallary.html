@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+        th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<section>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+      <div th:if="${imagesNames.isEmpty()}">
+        <div class="alert alert-danger" role="alert">
+          <p class="lead">No Image Define</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="row" >
+      <div class="col-md-4" th:each="img : ${imagesNames}">
+        <div class="card mb-3">
+          <img th:src="@{'/example1/gallary/'+${img}}" class="card-img">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container mt-5">
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h3>Image Upload</h3>
+          </div>
+          <div class="card-body">
+            <form action="#" th:action="@{/example1/gallary}" enctype="multipart/form-data" method="post">
+              <div class="form-group">
+                <label for="uploadFile">Upload Image</label>
+                <input type="file"  id="uploadFile" name="file" class="form-control-file">
+              </div>
+
+              <input type="submit" value="Upload" class="btn btn-primary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
